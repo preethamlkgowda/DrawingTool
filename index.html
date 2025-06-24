@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing App</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="toolbar">
+        <div class="toolbar-group">
+            <!-- Tool Icons: https://feathericons.com/ -->
+            <button data-tool="select" title="Select Tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7 18 2.5-7.5L21 9l-18-6z"/></svg></button>
+            <button data-tool="rectangle" title="Rectangle Tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg></button>
+            <button data-tool="circle" title="Circle Tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg></button>
+            <button data-tool="line" title="Line Tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+            <button data-tool="freehand" title="Pencil Tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></button>
+            <button data-tool="text" title="Text Tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg></button>
+            <button data-tool="eraser" title="Eraser Tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 7.76l-4.5-4.5a2 2 0 0 0-2.83 0L6 10.17l-4 4L2 22l7.83-7.83 10.41-10.41a2 2 0 0 0 0-2.83zM15 5l5 5"></path></svg></button>
+        </div>
+
+        <div class="toolbar-group" id="property-controls">
+            <div class="property-controls-item color-input-wrapper">
+                <label for="stroke-color" title="Stroke Color">Stroke:</label>
+                <input type="color" id="stroke-color" value="#000000">
+            </div>
+            <div class="property-controls-item color-input-wrapper">
+                <label for="fill-color" title="Fill Color">Fill:</label>
+                <input type="color" id="fill-color" value="#cccccc">
+            </div>
+            <div class="property-controls-item">
+                <input type="checkbox" id="fill-shape" checked>
+                <label for="fill-shape" title="Toggle Fill">Fill Shape</label>
+            </div>
+        </div>
+
+        <div class="toolbar-group" id="text-controls">
+            <div class="property-controls-item">
+                <label for="font-family">Font:</label>
+                <select id="font-family">
+                    <option value="Roboto">Roboto</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                </select>
+            </div>
+            <div class="property-controls-item">
+                <label for="font-size">Size:</label>
+                <input type="number" id="font-size" value="24" min="1">
+            </div>
+        </div>
+        
+        <div class="toolbar-group">
+            <button id="clear-canvas" title="Clear All"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
+            <button id="save-drawing" title="Save Drawing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg></button>
+            <input type="file" id="load-drawing" accept=".json" style="display:none;">
+            <label for="load-drawing" title="Load Drawing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg></label>
+        </div>
+    </div>
+
+    <canvas id="drawing-canvas"></canvas>
+
+    <!-- The script is placed at the end of the body to ensure all HTML elements are loaded before it runs. -->
+    <script src="js/script.js"></script>
+</body>
+</html>
